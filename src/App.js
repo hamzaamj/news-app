@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Alert from "./components/Alert";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
+import News from "./components/News";
+import SidebarMenu from "./components/SidebarMenu";
 import {
     BrowserRouter as Router,
     Routes,
@@ -56,13 +58,34 @@ export default class App extends Component {
         return (
             <>
                 <Router>
-                    <Navbar title="ReactApp" contactUsText="Contact Us" aboutText="About ReactApp" modeText={this.state.modeText} changeMode={this.changeMode} mode={this.state.mode}/>
-                    <Alert alert={this.state.alertText}/>
-                    <Routes>
-                        <Route path="/about" element={<AboutUs mode={this.state.mode} />} />
-                        <Route path="/contact" element={<ContactUs mode={this.state.mode} />} />
-                    </Routes>
+                    <div style={{ display: "flex", height: "120vh" }}>
+                        {/* Sidebar Menu */}
+                        <SidebarMenu mode={this.state.mode}
+                                     title="NewsApp"
+                                     contactUsText="Contact Us"
+                                     aboutText="About ReactApp"/>
+
+                        <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+                            <Navbar
+                                title="NewsApp"
+                                contactUsText="Contact Us"
+                                aboutText="About ReactApp"
+                                modeText={this.state.modeText}
+                                changeMode={this.changeMode}
+                                mode={this.state.mode}
+                            />
+                            <Alert alert={this.state.alertText} />
+                            <div style={{ padding: "10px" }}>
+                                <Routes>
+                                    <Route path="/about" element={<AboutUs mode={this.state.mode} />} />
+                                    <Route path="/contact" element={<ContactUs mode={this.state.mode} />} />
+                                    <Route path="/" element={<News mode={this.state.mode} />} />
+                                </Routes>
+                            </div>
+                        </div>
+                    </div>
                 </Router>
+
             </>
         )
     }

@@ -6,7 +6,7 @@ class Alert extends Component {
         const { alert } = this.props;
 
         return (
-            <div style={{ height: "50px" }}>
+            <div style={{ height: "70px" }}>
                 {alert && (
                     <div className="container my-3">
                         <div
