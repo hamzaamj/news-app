@@ -13,7 +13,7 @@ class SidebarMenu extends Component {
                 </button>
                 <div className={`sidebar bg-${this.props.mode}`}>
                     <ul className="menu" style={{color: textColor}}>
-                        <li><Link style={{color: textColor}} className="nav-link" aria-current="page" to="/">Home</Link></li>
+                        <li><Link style={{color: textColor}} className="nav-link" aria-current="page" to="/general">Home</Link></li>
                         <li><Link style={{color: textColor}} className="nav-link" to="/about">{this.props.aboutText}</Link></li>
                         <li><Link style={{color: textColor}} className="nav-link" to="/contact">{this.props.contactUsText}</Link></li>
                     </ul>

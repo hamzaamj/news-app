@@ -52,7 +52,7 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
+/*Sidebar menu CSS*/
 .sidebar {
   width: 250px; /* Fixed width */
   height: 100vh; /* Full height of the viewport */
@@ -82,6 +82,75 @@
   text-decoration: none;
   color: #333;
   display: block;
+}
+/*End Sidebar Menu*/
+
+/*Spinner CSS*/
+#button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 30px;
+  background-color: #eee;
+  border: solid #ccc 1px;
+  cursor: pointer;
+}
+#overlay {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 90%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.cv-spinner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px #ddd solid;
+  border-top: 4px #2e93e6 solid;
+  border-radius: 50%;
+  animation: sp-anime 0.8s infinite linear;
+}
+@keyframes sp-anime {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*End Spinner CSS*/
+
+.news-category {
+  display: flex; /* Align items in a row */
+  list-style: none; /* Remove default bullet points */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+}
+
+.nav-item {
+  margin-right: 15px; /* Add space between items */
+}
+
+.news-category .nav-link {
+  display: inline-block; /* Make links look like buttons */
+  padding: 10px 20px; /* Add padding to buttons */
+  border: 1px solid #007bff; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #007bff; /* Button background */
+  color: white; /* Button text color */
+  text-decoration: none; /* Remove underline */
+  font-size: 14px; /* Font size */
+  transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+/* Hover effect for buttons */
+.news-category .nav-link:hover {
+  background-color: white; /* Change background to white */
+  color: #007bff; /* Change text color to match border */
+  border-color: #007bff; /* Ensure border color stays the same */
 }
 
 
