@@ -8,14 +8,41 @@ export class News extends Component {
         super();
         const news =[];
         this.state = {
-            articles: news
+            articles: news,
+            page: 1,
+            pageSize: 20,
         }
     }
     async componentDidMount() {
-        let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=4e8e8cd66dbe4681a1f0ace32f37db20";
+        let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=4e8e8cd66dbe4681a1f0ace32f37db20&page=${this.state.page}&pageSize=${this.state.pageSize}`;
         let data = await fetch(url);
         let parsedData = await data.json();
-        this.setState({articles: parsedData.articles})
+        this.setState({
+            articles: parsedData.articles,
+            totalResults: parsedData.totalResults,
+        });
+    }
+
+    handleNextClick = async () => {
+        if(!(this.state.page + 1 > Math.ceil(this.state.totalResults/this.state.pageSize))){
+            let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=4e8e8cd66dbe4681a1f0ace32f37db20&page=${this.state.page + 1}&pageSize=${this.state.pageSize}`;
+            let data = await fetch(url);
+            let parsedData = await data.json();
+            this.setState({
+                page: this.state.page + 1,
+                articles: parsedData.articles
+            })
+        }
+
+    }
+    handlePrevClick = async () => {
+        let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=4e8e8cd66dbe4681a1f0ace32f37db20&page=${this.state.page - 1}&pageSize=${this.state.pageSize}`;
+        let data = await fetch(url);
+        let parsedData = await data.json();
+        this.setState({
+            page: this.state.page - 1,
+            articles: parsedData.articles
+        })
     }
 
     render() {
@@ -35,8 +62,8 @@ export class News extends Component {
                     </div>
                 </div>
                 <div className="container d-flex justify-content-between">
-                    <a href="/" target="_blank" className="btn btn-sm btn-primary">Previous</a>
-                    <a href="/" target="_blank" className="btn btn-sm btn-primary">Next</a>
+                    <button disabled={this.state.page <= 1 ? true : false} onClick={this.handlePrevClick} className="btn btn-sm btn-primary">&larr; Previous</button>
+                    <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.state.pageSize) ? true : false} onClick={this.handleNextClick} className="btn btn-sm btn-primary">Next &rarr;</button>
                 </div>
             </>
         );

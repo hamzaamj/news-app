@@ -17,7 +17,7 @@ export class NewsItem extends Component {
                         <p className="card-text" style={{textAlign: "left"}}>
                             {description ? description.split(" ").slice(0, 200).join(" ") + "..." : "No description available."}
                         </p>
-                        <a href={url} target="_blank" className="btn btn-sm btn-primary">View Details</a>
+                        <a href={url} target="_blank" className="btn btn-sm btn-primary">Read More</a>
                     </div>
                 </div>
             </>

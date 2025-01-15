@@ -59,12 +59,7 @@ export default class App extends Component {
             <>
                 <Router>
                     <div style={{ display: "flex", height: "120vh" }}>
-                        {/* Sidebar Menu */}
-                        <SidebarMenu mode={this.state.mode}
-                                     title="NewsApp"
-                                     contactUsText="Contact Us"
-                                     aboutText="About ReactApp"/>
-
+                        <SidebarMenu mode={this.state.mode} title="NewsApp" contactUsText="Contact Us" aboutText="About ReactApp"/>
                         <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
                             <Navbar
                                 title="NewsApp"
