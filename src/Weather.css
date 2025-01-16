@@ -1,5 +1,27 @@
-.rounded-border{
+.weather-rounded-border{
     padding: 20px;
     border-radius: 20px;
     border: 1px solid #ccc
+}
+
+.weather-card-hover:hover {
+    /*transition: box-shadow 1.3s ease-in; !* Smooth shadow animation *!*/
+    background-color: white;
+    color: black;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth fade, slide, and scale */
+    opacity: 1;
+    transform: translateY(0) scale(1.05);
+}
+
+.weather-fade-in {
+    opacity: 1;
+    transform: translateY(0) scale(1.05); /* Final position with smooth scaling */
+    transition: opacity 0.8s ease-in, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth fade, slide, and scale */
+}
+
+.weather-fade-out {
+    opacity: 0;
+    transform: translateY(50px) scale(1); /* Initial position with normal size */
+    transition: opacity 0.8s ease-in, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Ensure exit animation matches */
 }

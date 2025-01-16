@@ -13,7 +13,8 @@ export class News extends Component {
             articles: news,
             page: 1,
             pageSize: 8,
-            loading: true
+            loading: true,
+            isLoaded: false,
         }
     }
     async componentDidMount() {
@@ -23,7 +24,8 @@ export class News extends Component {
         this.setState({
             articles: parsedData.articles,
             totalResults: parsedData.totalResults,
-            loading: false
+            loading: false,
+            isLoaded: true
         });
     }
 
@@ -36,7 +38,8 @@ export class News extends Component {
             this.setState({
                 page: this.state.page + 1,
                 articles: parsedData.articles,
-                loading: false
+                loading: false,
+                isLoaded: true
             })
         }
 
@@ -49,7 +52,8 @@ export class News extends Component {
         this.setState({
             page: this.state.page - 1,
             articles: parsedData.articles,
-            loading: false
+            loading: false,
+            isLoaded: true
         })
     }
     capitalize(str) {
@@ -66,30 +70,30 @@ export class News extends Component {
                     <h2 style={{color: textColor}}>Latest News {this.props.category ? `- ${this.capitalize(this.props.category)}` : ""}</h2>
                     <ul className="news-category">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/general">General</Link>
+                            <Link className={`nav-link ${this.props.category === 'general' ? 'cat-btn-highlight' : ''}`} to="/general">General</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/business">Business</Link>
+                            <Link className={`nav-link ${this.props.category === 'business' ? 'cat-btn-highlight' : ''}`} to="/business">Business</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/entertainment">Entertainment</Link>
+                            <Link className={`nav-link ${this.props.category === 'entertainment' ? 'cat-btn-highlight' : ''}`} to="/entertainment">Entertainment</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/health">Health</Link>
+                            <Link className={`nav-link ${this.props.category === 'health' ? 'cat-btn-highlight' : ''}`} to="/health">Health</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/science">Science</Link>
+                            <Link className={`nav-link ${this.props.category === 'science' ? 'cat-btn-highlight' : ''}`} to="/science">Science</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/sports">Sports</Link>
+                            <Link className={`nav-link ${this.props.category === 'sports' ? 'cat-btn-highlight' : ''}`} to="/sports">Sports</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/technology">Technology</Link>
+                            <Link className={`nav-link ${this.props.category === 'technology' ? 'cat-btn-highlight' : ''}`} to="/technology">Technology</Link>
                         </li>
                     </ul>
-                    <div className="row">
+                    <div className={`row ${this.state.isLoaded ? "fade-in" : "fade-out"}`}>
                         {this.state.articles.map((element) => {
-                            return <div className="col-md-3" key={element.url}>
+                            return <div className="col-md-3 card-group" key={element.url}>
                                 <NewsItem url={element.url} mode={this.props.mode} title={element.title}
                                           imgPath={element.urlToImage === null ? '/logo192.png' : element.urlToImage}
                                           description={element.description}/>

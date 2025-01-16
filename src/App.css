@@ -100,7 +100,7 @@
   z-index: 100;
   width: 90%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  /*background: rgba(0, 0, 0, 0.6);*/
 }
 .cv-spinner {
   height: 100%;
@@ -152,6 +152,44 @@
   color: #007bff; /* Change text color to match border */
   border-color: #007bff; /* Ensure border color stays the same */
 }
+
+.news-category .cat-btn-highlight{
+  background-color: white; /* Change background to white */
+  color: #007bff; /* Change text color to match border */
+  border-color: #007bff; /* Ensure border color stays the same */
+}
+
+/* General hover animation for the card */
+.card-hover {
+  transition: box-shadow 0.3s ease; /* Smooth shadow animation */
+}
+
+.card-hover:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+/* Specific hover animation for the card image */
+.card-img-hover {
+  transition: transform 0.3s ease; /* Smooth scaling animation for the image */
+}
+
+.card-hover:hover .card-img-hover {
+  transform: scale(1.08); /* Scale the image slightly */
+}
+
+/* Smooth animation for data appearing from bottom to top */
+.fade-in {
+  opacity: 1;
+  transform: translateY(0); /* Final position */
+  transition: opacity 1s ease-in, transform 1s ease-in; /* Smooth fade and slide */
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(50px); /* Start position below the card */
+}
+
+
 
 
 

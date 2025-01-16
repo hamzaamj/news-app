@@ -4,7 +4,7 @@ export class WeatherToday extends Component {
 
     render() {
         return (
-            <div className="weather-left col-md-3 rounded-border">
+            <div className="weather-left col-md-3 weather-rounded-border">
                 <h3>Thursday</h3>
                 <p>16 Jan 2025</p>
                 <p>Bahawalpur - Pakistan</p>

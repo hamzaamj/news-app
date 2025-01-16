@@ -3,11 +3,23 @@ import WeatherToday from "./WeatherToday";
 import WeekWeather from "./WeekWeather";
 import WeatherDetailTable from "./WeatherDetailTable";
 export class Weather extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoaded: false, // State to handle lazy load animation
+        };
+    }
+    componentDidMount() {
+        // Simulate lazy loading animation
+        setTimeout(() => {
+            this.setState({ isLoaded: true });
+        }, 100); // Adjust the delay as needed
+    }
     render() {
         const textColor = this.props.mode === "light" ? "black" : "white";
         return (
             <>
-                <div className="container" style={{textAlign: "center"}}>
+                <div className={`container my-3 ${this.state.isLoaded ? "weather-fade-in" : "weather-fade-out"}`} style={{textAlign: "center"}}>
                     <h2 style={{color: textColor}}>{this.props.heading}</h2>
                     <div className="weather-container" style={{color: "white"}}>
                         <div className="row" style={{
@@ -17,7 +29,7 @@ export class Weather extends Component {
                             borderRadius: "20px"
                         }}>
                             <WeatherToday/>
-                            <div className="weather-right col-md-9 rounded-border">
+                            <div className="weather-right col-md-9 weather-rounded-border">
                                 <WeekWeather/>
                                 <WeatherDetailTable/>
                             </div>
