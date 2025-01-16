@@ -6,6 +6,7 @@ import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import News from "./components/News";
 import SidebarMenu from "./components/SidebarMenu";
+import Weather  from "./components/Weather";
 import {
     BrowserRouter as Router,
     Routes,
@@ -60,7 +61,7 @@ export default class App extends Component {
             <>
                 <Router>
                     <div style={{ display: "flex", height: "120vh" }}>
-                        <SidebarMenu mode={this.state.mode} title="NewsApp" contactUsText="Contact Us" aboutText="About ReactApp"/>
+                        <SidebarMenu mode={this.state.mode} title="NewsApp" weatherText="Weather Updates" contactUsText="Contact Us" aboutText="About ReactApp"/>
                         <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
                             <Navbar
                                 title="NewsApp"
@@ -74,14 +75,15 @@ export default class App extends Component {
                             <div style={{ padding: "10px" }}>
                                 <Routes>
                                     <Route path="/about" element={<AboutUs mode={this.state.mode} />} />
+                                    <Route path="/weather" element={<Weather mode={this.state.mode} heading="Weather Updates" />} />
                                     <Route path="/contact" element={<ContactUs mode={this.state.mode} />} />
-                                    <Route exact path="/general" element={<News key="general" category="general" mode={this.state.mode} apiKey={this.apiKey} />} />
-                                    <Route exact path="/business" element={<News key="business" category="business" mode={this.state.mode} apiKey={this.apiKey} />} />
-                                    <Route exact path="/entertainment" element={<News key="entertainment" category="entertainment" mode={this.state.mode} apiKey={this.apiKey} />} />
-                                    <Route exact path="/health" element={<News key="health" category="health" mode={this.state.mode} apiKey={this.apiKey} />} />
-                                    <Route exact path="/science" element={<News key="science" category="science" mode={this.state.mode} apiKey={this.apiKey} />} />
-                                    <Route exact path="/sports" element={<News key="sports" category="sports" mode={this.state.mode} apiKey={this.apiKey} />} />
-                                    <Route exact path="/technology" element={<News key="technology" category="technology"  mode={this.state.mode} apiKey={this.apiKey} />} />
+                                    <Route exact path="/general" element={<News key="general" country="us" category="general" mode={this.state.mode} apiKey={this.apiKey} />} />
+                                    <Route exact path="/business" element={<News key="business" country="us" category="business" mode={this.state.mode} apiKey={this.apiKey} />} />
+                                    <Route exact path="/entertainment" element={<News key="entertainment" country="us" category="entertainment" mode={this.state.mode} apiKey={this.apiKey} />} />
+                                    <Route exact path="/health" element={<News key="health" country="us" category="health" mode={this.state.mode} apiKey={this.apiKey} />} />
+                                    <Route exact path="/science" element={<News key="science" country="us" category="science" mode={this.state.mode} apiKey={this.apiKey} />} />
+                                    <Route exact path="/sports" element={<News key="sports" country="us" category="sports" mode={this.state.mode} apiKey={this.apiKey} />} />
+                                    <Route exact path="/technology" element={<News key="technology" country="us" category="technology"  mode={this.state.mode} apiKey={this.apiKey} />} />
                                 </Routes>
                             </div>
                         </div>
