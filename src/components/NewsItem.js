@@ -20,11 +20,10 @@ export class NewsItem extends Component {
         const textColor = this.props.mode === "light" ? "black" : "white";
         const cardBg = this.props.mode === "light" ? "white" : "#212529";
         const { title, description, imgPath, url } = this.props;
-        console.log(this.state.isLoaded);
         return (
             <div
-                className={`card my-3 card-hover ${this.state.isLoaded ? "fade-in" : "fade-out"}`}
-                style={{ width: "18rem", backgroundColor: cardBg, color: textColor }}
+                className={`card-text card my-3 card-hover ${this.state.isLoaded ? "fade-in" : "fade-out"}`}
+                style={{ backgroundColor: cardBg, color: textColor }}
             >
                 <img
                     style={{ width: "100%", height: "200px" }}
@@ -32,16 +31,12 @@ export class NewsItem extends Component {
                     className="card-img-top card-img-hover"
                     alt="..."
                 />
-                <div className="card-body">
-                    <h5 className="card-title" style={{ textAlign: "left" }}>
-                        {title
-                            ? title.split(" ").slice(0, 10).join(" ") + "..."
-                            : "No title available."}
+                <div className="card-body" style={{ textAlign: "left" }}>
+                    <h5 className="card-title" >
+                        {title}
                     </h5>
-                    <p className="card-text" style={{ textAlign: "left" }}>
-                        {description
-                            ? description.split(" ").slice(0, 200).join(" ") + "..."
-                            : "No description available."}
+                    <p className="card-text">
+                        {description}
                     </p>
                 </div>
                 <div className="card-footer">

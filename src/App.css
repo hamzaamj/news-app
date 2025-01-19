@@ -162,6 +162,7 @@
 /* General hover animation for the card */
 .card-hover {
   transition: box-shadow 0.3s ease; /* Smooth shadow animation */
+  overflow: hidden;
 }
 
 .card-hover:hover {
@@ -177,6 +178,12 @@
   transform: scale(1.08); /* Scale the image slightly */
 }
 
+.card-text {
+  max-width: 20em; /* Optional: Set a maximum width if needed */
+  overflow: hidden; /* Hide the overflowing content */
+  white-space: normal; /* Allow wrapping for multiple lines */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
 /* Smooth animation for data appearing from bottom to top */
 .fade-in {
   opacity: 1;
@@ -188,7 +195,6 @@
   opacity: 0;
   transform: translateY(50px); /* Start position below the card */
 }
-
 
 
 

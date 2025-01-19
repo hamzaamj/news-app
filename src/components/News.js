@@ -4,7 +4,7 @@ import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import {Link} from "react-router-dom";
 
-// My API key is: 4e8e8cd66dbe4681a1f0ace32f37db20
+// My News API key is: 4e8e8cd66dbe4681a1f0ace32f37db20
 export class News extends Component {
     constructor() {
         super();
@@ -65,30 +65,41 @@ export class News extends Component {
         const textColor = this.props.mode === "light" ? "black" : "white";
         return (
             <>
-                {this.state.loading &&<Spinner/>}
+                {this.state.loading && <Spinner/>}
                 <div className="container" style={{textAlign: "center"}}>
-                    <h2 style={{color: textColor}}>Latest News {this.props.category ? `- ${this.capitalize(this.props.category)}` : ""}</h2>
+                    <h2 style={{color: textColor}}>Latest
+                        News {this.props.category ? `- ${this.capitalize(this.props.category)}` : ""}</h2>
                     <ul className="news-category">
                         <li className="nav-item">
-                            <Link className={`nav-link ${this.props.category === 'general' ? 'cat-btn-highlight' : ''}`} to="/general">General</Link>
+                            <Link className={`nav-link ${this.props.category === 'general' ? 'cat-btn-highlight' : ''}`}
+                                  to="/general">General</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={`nav-link ${this.props.category === 'business' ? 'cat-btn-highlight' : ''}`} to="/business">Business</Link>
+                            <Link
+                                className={`nav-link ${this.props.category === 'business' ? 'cat-btn-highlight' : ''}`}
+                                to="/business">Business</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={`nav-link ${this.props.category === 'entertainment' ? 'cat-btn-highlight' : ''}`} to="/entertainment">Entertainment</Link>
+                            <Link
+                                className={`nav-link ${this.props.category === 'entertainment' ? 'cat-btn-highlight' : ''}`}
+                                to="/entertainment">Entertainment</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={`nav-link ${this.props.category === 'health' ? 'cat-btn-highlight' : ''}`} to="/health">Health</Link>
+                            <Link className={`nav-link ${this.props.category === 'health' ? 'cat-btn-highlight' : ''}`}
+                                  to="/health">Health</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={`nav-link ${this.props.category === 'science' ? 'cat-btn-highlight' : ''}`} to="/science">Science</Link>
+                            <Link className={`nav-link ${this.props.category === 'science' ? 'cat-btn-highlight' : ''}`}
+                                  to="/science">Science</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={`nav-link ${this.props.category === 'sports' ? 'cat-btn-highlight' : ''}`} to="/sports">Sports</Link>
+                            <Link className={`nav-link ${this.props.category === 'sports' ? 'cat-btn-highlight' : ''}`}
+                                  to="/sports">Sports</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={`nav-link ${this.props.category === 'technology' ? 'cat-btn-highlight' : ''}`} to="/technology">Technology</Link>
+                            <Link
+                                className={`nav-link ${this.props.category === 'technology' ? 'cat-btn-highlight' : ''}`}
+                                to="/technology">Technology</Link>
                         </li>
                     </ul>
                     <div className={`row ${this.state.isLoaded ? "fade-in" : "fade-out"}`}>

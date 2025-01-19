@@ -3,12 +3,19 @@ import WeatherToday from "./WeatherToday";
 import WeekWeather from "./WeekWeather";
 import WeatherDetailTable from "./WeatherDetailTable";
 export class Weather extends Component {
+
+// MY Weather API Key: 6a5d948f340508262ff3a6cca81d0388
+// URL To Fetch Records: https://api.openweathermap.org/data/2.5/weather?q=bahawalpur&appid=6a5d948f340508262ff3a6cca81d0388
+
     constructor(props) {
         super(props);
         this.state = {
             isLoaded: false, // State to handle lazy load animation
         };
     }
+    weatherAPIKey = "6a5d948f340508262ff3a6cca81d0388";
+    city = "bahawalpur";
+    url = `https://api.openweathermap.org/data/2.5/weather`;
     componentDidMount() {
         // Simulate lazy loading animation
         setTimeout(() => {
@@ -28,7 +35,7 @@ export class Weather extends Component {
                             backgroundSize: "cover",
                             borderRadius: "20px"
                         }}>
-                            <WeatherToday/>
+                            <WeatherToday url={this.url} weatherAPIKey={this.weatherAPIKey} city={this.city}/>
                             <div className="weather-right col-md-9 weather-rounded-border">
                                 <WeekWeather/>
                                 <WeatherDetailTable/>
