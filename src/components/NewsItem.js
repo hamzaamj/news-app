@@ -31,16 +31,22 @@ export class NewsItem extends Component {
                     className="card-img-top card-img-hover"
                     alt="..."
                 />
-                <div className="card-body" style={{ textAlign: "left" }}>
-                    <h5 className="card-title" >
+                <div className="card-body" style={{textAlign: "left"}}>
+                    <h5 className="card-title">
                         {title}
                     </h5>
+                    <span className="badge rounded-pill bg-primary">{this.props.source}</span>
                     <p className="card-text">
                         {description}
                     </p>
+                    <p className="card-text">
+                        <small><b>By:</b> {this.props.author ? this.props.author : "Unknown"}</small>
+                        <br/>
+                        <small><b>Published:</b> {new Date(this.props.published).toGMTString()}</small>
+                    </p>
                 </div>
                 <div className="card-footer">
-                    <a href={url} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-primary">
+                <a href={url} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-primary">
                         Read More
                     </a>
                 </div>
