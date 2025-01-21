@@ -4,8 +4,6 @@ import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import {Link} from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
-
-// My News API key is: 4e8e8cd66dbe4681a1f0ace32f37db20
 export class News extends Component {
     constructor(props) {
         super(props);
@@ -115,7 +113,6 @@ export class News extends Component {
                             hasMore={this.state.articles.length < this.state.totalResults}
                             loader={this.state.loading ? <Spinner/> : ""}
                             style={{overflow: "hidden"}}
-                            // endMessage={<p style={{ textAlign: "center" }}>You have reached the end!</p>}
                         >
                             <div className="container">
                                 <div className={`row ${this.state.isLoaded ? "fade-in" : "fade-out"}`}>

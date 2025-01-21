@@ -7,14 +7,13 @@ import WeatherDetailTable from "./WeatherDetailTable";
 
 export class Weather extends Component {
 
-    // MY Weather API Key: 6a5d948f340508262ff3a6cca81d0388
-    // URL To Fetch Records: https://api.openweathermap.org/data/2.5/weather?q=bahawalpur&appid=6a5d948f340508262ff3a6cca81d0388
+    // URL To Fetch Records: https://api.openweathermap.org/data/2.5/weather?q=bahawalpur&appid=process.env.REACT_APP_WEATHER_API_KEY
 
     constructor(props) {
         super(props);
         this.state = {
             isLoaded: false, // State to handle lazy load animation
-            weatherAPIKey : "6a5d948f340508262ff3a6cca81d0388",
+            weatherAPIKey : process.env.REACT_APP_WEATHER_API_KEY,
             city : "bahawalpur",
             cityID : "1183880",
             url : `https://api.openweathermap.org/data/2.5/weather`,

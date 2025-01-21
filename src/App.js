@@ -21,8 +21,7 @@ export default class App extends Component {
             mode: 'light', // Light or dark mode
             modeText: 'Enable Dark Mode', // Text for the toggle button
             alertText: null, // Alert message
-            // apiKey : '1af2f0bcae22463aaad94919159a54f0'
-            apiKey : '4e8e8cd66dbe4681a1f0ace32f37db20',
+            apiKey : process.env.REACT_APP_NEWS_API_KEY,
             progress: 0
         };
     }
