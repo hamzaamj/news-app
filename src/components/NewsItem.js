@@ -23,10 +23,14 @@ export class NewsItem extends Component {
         return (
             <div
                 className={`card-text card my-3 card-hover ${this.state.isLoaded ? "fade-in" : "fade-out"}`}
-                style={{ backgroundColor: cardBg, color: textColor }}
+                style={{backgroundColor: cardBg, color: textColor}}
             >
+
+                <div style={{display: "flex", position: "absolute",right: "0"}}>
+                    <span className="badge rounded-pill bg-primary">{this.props.source}</span>
+                </div>
                 <img
-                    style={{ width: "100%", height: "200px" }}
+                    style={{width: "100%", height: "200px"}}
                     src={imgPath}
                     className="card-img-top card-img-hover"
                     alt="..."
@@ -35,7 +39,6 @@ export class NewsItem extends Component {
                     <h5 className="card-title">
                         {title}
                     </h5>
-                    <span className="badge rounded-pill bg-primary">{this.props.source}</span>
                     <p className="card-text">
                         {description}
                     </p>
@@ -46,7 +49,7 @@ export class NewsItem extends Component {
                     </p>
                 </div>
                 <div className="card-footer">
-                <a href={url} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-primary">
+                    <a href={url} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-primary">
                         Read More
                     </a>
                 </div>

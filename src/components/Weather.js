@@ -40,9 +40,12 @@ export class Weather extends Component {
     }
 
     async getWeatherReport(city){
+        this.props.setProgress(10);
         let url = `${this.state.url}?q=${city}&units=metric&appid=${this.state.weatherAPIKey}`;
         let weatherData = await fetch(url);
+        this.props.setProgress(30);
         let weatherParsedData = await weatherData.json();
+        this.props.setProgress(50);
         // Setting day and date
         const now = new Date();
         const day = now.toLocaleDateString("en-US", { weekday: "long" }); // e.g., "Thursday"
@@ -59,6 +62,7 @@ export class Weather extends Component {
         hours = hours % 12;
         hours = hours ? hours : 12; // If hour is 0, set to 12
         const formattedTime = `${hours}:${minutes < 10 ? "0" : ""}${minutes} ${ampm}`; // Format time as HH:mm AM/PM
+        this.props.setProgress(80);
         // Set state
         this.setState({
             temp: Math.round(weatherParsedData.main.temp),
@@ -74,6 +78,7 @@ export class Weather extends Component {
             time: formattedTime,
             loading: false,
         });
+        this.props.setProgress(100);
     }
 
     render() {
