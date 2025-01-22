@@ -11,6 +11,7 @@ export class Weather extends Component {
 
     constructor(props) {
         super(props);
+        document.title = this.props.heading;
         this.state = {
             isLoaded: false, // State to handle lazy load animation
             weatherAPIKey : process.env.REACT_APP_WEATHER_API_KEY,

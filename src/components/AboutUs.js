@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "../App.css";
 
 class AboutUs extends Component {
+    constructor() {
+        super();
+        document.title = "About Us";
+    }
     render() {
         const textColor = this.props.mode === "light" ? "black" : "white";
 
