@@ -1,36 +1,29 @@
-import React, {Component} from "react";
+import React, {useEffect} from "react";
 
 import "../Weather.css";
 
 
-export class WeatherWeather extends Component {
-    componentDidMount() {
-        this.loadD3Script();
-    }
+const WeekWeather = (props) => {
+    useEffect(() => {
+        loadD3Script();
+        initializeWeatherWidget();
+    },[props.cityID, props.weatherAPIKey]);
 
-    componentDidUpdate(prevProps) {
-        // Detect changes in the relevant props
-        if (prevProps.cityID !== this.props.cityID || prevProps.weatherAPIKey !== this.props.weatherAPIKey) {
-            console.log("Props changed. Reloading widget...");
-            this.initializeWeatherWidget(); // Reinitialize the widget with updated props
-        }
-    }
-
-    loadD3Script = () => {
+    const loadD3Script = () => {
         // Add the d3.min.js script only if it's not already added
         if (!document.getElementById("d3-script")) {
             const d3Script = document.createElement("script");
             d3Script.id = "d3-script";
             d3Script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js";
             d3Script.async = true;
-            d3Script.onload = this.initializeWeatherWidget;
+            d3Script.onload = initializeWeatherWidget;
             document.body.appendChild(d3Script);
         } else {
-            this.initializeWeatherWidget();
+            initializeWeatherWidget();
         }
     };
 
-    initializeWeatherWidget = () => {
+    const initializeWeatherWidget = () => {
         // Clear the existing widget parameters
         window.myWidgetParam = [];
 
@@ -47,8 +40,8 @@ export class WeatherWeather extends Component {
         // Set up the widget parameters
         window.myWidgetParam.push({
             id: 11,
-            cityid: this.props.cityID, // Use the latest props here
-            appid: this.props.weatherAPIKey,
+            cityid: props.cityID, // Use the latest props here
+            appid: props.weatherAPIKey,
             units: 'metric',
             containerid: 'openweathermap-widget-11',
         });
@@ -63,7 +56,6 @@ export class WeatherWeather extends Component {
         document.body.appendChild(weatherWidgetScript);
     };
 
-    render() {
         return (
             <div className="row text-center row-cols-2 row-cols-lg-6 g-2 g-lg-3"
                  style={{textAlign: "center",padding:"40px 80px"}}>
@@ -121,6 +113,5 @@ export class WeatherWeather extends Component {
             </div>
         );
     }
-}
 
-export default WeatherWeather
+export default WeekWeather;

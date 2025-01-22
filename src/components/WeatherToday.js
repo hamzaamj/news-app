@@ -1,30 +1,28 @@
-import React, {Component} from "react";
+import React, {useEffect} from "react";
 
 import Spinner from "./Spinner";
 import "../Weather.css";
 
 
-export class WeatherToday extends Component {
-
-    async componentDidMount() {
-        this.props.getWeatherReport(this.props.city);
-    }
-    searchCity  = async () => {
+const WeatherToday = (props) => {
+    useEffect(() => {
+        props.getWeatherReport(props.city);
+    }, []);
+    const searchCity  = async () => {
         const city = document.getElementById("city").value;
-        this.props.getWeatherReport(city);
+        props.getWeatherReport(city);
     }
-   capitalizeWords = (str) => {
+   const capitalizeWords = (str) => {
         return str
             .split(' ') // Split the string into an array of words
             .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
             .join(' '); // Join the words back into a single string
     };
 
-    render() {
         return (
             <>
                 <div className="weather-left col-md-4 weather-rounded-border">
-                    {this.props.loading && <Spinner/>}
+                {props.loading && <Spinner/>}
                     <div className="row">
                         <div className="col-10" style={{paddingRight: "0"}}>
                             <input
@@ -43,7 +41,7 @@ export class WeatherToday extends Component {
                         <div className="col-2" style={{paddingLeft: "0", paddingRight: "0"}}>
                             <button
                                 className="btn btn-primary btn-sm"
-                                onClick={this.searchCity}
+                            onClick={searchCity}
                                 style={{
                                     borderRadius: "0 20px 20px 0",
                                     width: "100%",
@@ -59,24 +57,23 @@ export class WeatherToday extends Component {
                             </button>
                         </div>
                     </div>
-                    <h3>{this.props.day}</h3>
-                    <p>{this.props.date} - {this.props.time}</p>
-                    <p>{this.props.city} - {this.props.country}</p>
-                    {this.props.loading === false && (
+                <h3>{props.day}</h3>
+                <p>{props.date} - {props.time}</p>
+                <p>{props.city} - {props.country}</p>
+                {props.loading === false && (
                         <div className="weather-icon">
                             <img
                                 style={{width: "50%", height: "auto"}}
-                                src={`https://openweathermap.org/img/wn/${this.props.icon}.png`}
+                            src={`https://openweathermap.org/img/wn/${props.icon}.png`}
                                 alt="Weather Icon"
                             />
                         </div>
                     )}
-                    <h1>{this.props.temp}{this.props.temp > 0 ? "°C" : ""}</h1>
-                    <p>{this.capitalizeWords(this.props.condition)}</p>
+                <h1>{props.temp}{props.temp > 0 ? "°C" : ""}</h1>
+                <p>{capitalizeWords(props.condition)}</p>
                 </div>
             </>
         );
     }
-}
 
 export default WeatherToday;

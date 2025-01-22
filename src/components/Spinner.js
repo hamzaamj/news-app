@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import "../App.css";
 
-export default class Spinner extends Component {
-    render() {
-        return (
-            <div id="overlay">
-                <div className="cv-spinner">
-                    <span className="spinner"></span>
-                </div>
+const Spinner = () => {
+    return (
+        <div id="overlay">
+            <div className="cv-spinner">
+                <span className="spinner"></span>
             </div>
-        );
-    }
+        </div>
+    );
 }
+
+export default Spinner;
