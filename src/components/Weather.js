@@ -20,6 +20,9 @@ export class Weather extends Component {
             url : `https://api.openweathermap.org/data/2.5/weather`,
             country: '',
             temp: '',
+            min_temp: '',
+            max_temp: '',
+            feels_like: '',
             humidity: '',
             wind: '',
             condition: '',
@@ -66,7 +69,10 @@ export class Weather extends Component {
         // Set state
         this.setState({
             temp: Math.round(weatherParsedData.main.temp),
-            condition: weatherParsedData.weather[0].main,
+            min_temp: Math.round(weatherParsedData.main.temp_min),
+            max_temp: Math.round(weatherParsedData.main.temp_max),
+            feels_like: Math.round(weatherParsedData.main.feels_like),
+            condition: weatherParsedData.weather[0].description,
             humidity: weatherParsedData.main.humidity,
             wind: weatherParsedData.wind.speed,
             city: weatherParsedData.name,
@@ -110,7 +116,11 @@ export class Weather extends Component {
                             <div className="weather-right col-md-8 weather-rounded-border">
                                 <WeekWeather
                                     cityID={this.state.cityID} weatherAPIKey={this.state.weatherAPIKey}/>
-                                <WeatherDetailTable humidity={this.state.humidity} wind={this.state.wind}/>
+                                <WeatherDetailTable humidity={this.state.humidity}
+                                                    feels_like={this.state.feels_like}
+                                                    min_temp={this.state.min_temp}
+                                                    max_temp={this.state.max_temp}
+                                                    wind={this.state.wind}/>
                             </div>
                         </div>
                     </div>

@@ -13,6 +13,12 @@ export class WeatherToday extends Component {
         const city = document.getElementById("city").value;
         this.props.getWeatherReport(city);
     }
+   capitalizeWords = (str) => {
+        return str
+            .split(' ') // Split the string into an array of words
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
+            .join(' '); // Join the words back into a single string
+    };
 
     render() {
         return (
@@ -66,7 +72,7 @@ export class WeatherToday extends Component {
                         </div>
                     )}
                     <h1>{this.props.temp}{this.props.temp > 0 ? "°C" : ""}</h1>
-                    <p>{this.props.condition}</p>
+                    <p>{this.capitalizeWords(this.props.condition)}</p>
                 </div>
             </>
         );
