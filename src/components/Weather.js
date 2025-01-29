@@ -63,6 +63,7 @@ const Weather = (props) => {
         setWind(weatherParsedData.wind.speed);
         setCondition(weatherParsedData.weather[0].description);
         setDay(day);
+        setCity(city);
         setDate(formattedDate);
         setTime(formattedTime);
         setIcon(weatherParsedData.weather[0].icon);
@@ -75,8 +76,8 @@ const Weather = (props) => {
     const textColor = props.mode === "light" ? "black" : "white";
         return (
             <>
-            <div className={`container my-3 ${isLoaded ? "weather-fade-in" : "weather-fade-out"}`} style={{textAlign: "center"}}>
-                <h2 style={{color: textColor}}>{props.heading}</h2>
+                <div className={`container my-3 ${isLoaded ? "weather-fade-in" : "weather-fade-out"}`} style={{textAlign: "center"}}>
+                    <h2 style={{color: textColor}}>{props.heading}</h2>
                     <div className="weather-container" style={{color: "white"}}>
                         <div className="row" style={{
                             backgroundImage: "url(https://t3.ftcdn.net/jpg/05/79/86/10/360_F_579861052_KjeAAbyaXOBY6JjxMEPBVJypp2KSb59v.jpg)",

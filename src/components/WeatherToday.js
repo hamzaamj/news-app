@@ -59,7 +59,7 @@ const WeatherToday = (props) => {
                     </div>
                 <h3>{props.day}</h3>
                 <p>{props.date} - {props.time}</p>
-                <p>{props.city} - {props.country}</p>
+                <p>{capitalizeWords(props.city)} - {props.country}</p>
                 {props.loading === false && (
                         <div className="weather-icon">
                             <img
